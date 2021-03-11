@@ -189,7 +189,7 @@ function saveSpread(event) {
   let name = form.name.value
   window.localStorage.setItem(name, JSON.stringify(spread))
   form.reset()
-  reloadPage()
+  reloadPage
 }
 
 function loadSpreads() {
@@ -242,26 +242,32 @@ function murkState() {
 
 function runePosition(_number) {
   let spreadName = ""
+  let spreadId = ""
   if (_number == 1) {
     spreadName = "Single Rune Reading"
+    spreadId = "one"
     spread[0].position = "Daily Draw"
   } else if (_number == 2) {
     spreadName = "Two Rune Reading"
+    spreadId = "two"
     spread[0].position = "Circumstances"
     spread[1].position = "Outcome"
   } else if (_number == 3) {
     spreadName = "Three Rune Reading"
+    spreadId = "three"
     spread[0].position = "Past"
     spread[1].position = "Present"
     spread[2].position = "Future"
   } else if (_number == 4) {
     spreadName = "Four Rune Reading"
+    spreadId = "four"
     spread[0].position = "Placeholder"
     spread[1].position = "Placeholder"
     spread[2].position = "Placeholder"
     spread[3].position = "Placeholder"
   } else if (_number == 5) {
     spreadName = "Five Rune Reading"
+    spreadId = "five"
     spread[0].position = "Placeholder"
     spread[1].position = "Placeholder"
     spread[2].position = "Placeholder"
@@ -269,6 +275,7 @@ function runePosition(_number) {
     spread[4].position = "Placeholder"
   } else if (_number == 7) {
     spreadName = "Seven Rune Reading"
+    spreadId = "seven"
     spread[0].position = "Placeholder"
     spread[1].position = "Placeholder"
     spread[2].position = "Placeholder"
@@ -278,6 +285,7 @@ function runePosition(_number) {
     spread[6].position = "Placeholder"
   } else if (_number == 9) {
     spreadName = "Nine Rune Reading"
+    spreadId = "nine"
     spread[0].position = "Placeholder"
     spread[1].position = "Placeholder"
     spread[2].position = "Placeholder"
@@ -289,12 +297,15 @@ function runePosition(_number) {
     spread[8].position = "Placeholder"
   }
   document.getElementById("spread-name").innerText = spreadName
+  document.getElementById("redraw").classList.remove("hidden")
+  document.getElementById(spreadId).classList.remove("hidden")
 }
 
 function getStarted() {
   document.getElementById("save-button").classList.remove("hidden")
   document.getElementById("welcome").classList.add("hidden")
   document.getElementById("load-readings").classList.add("hidden")
+  document.getElementById("spread-list").classList.add("hidden")
 }
 
 function generateSpread(_number) {
