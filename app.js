@@ -189,6 +189,7 @@ function saveSpread(event) {
   let name = form.name.value
   window.localStorage.setItem(name, JSON.stringify(spread))
   form.reset()
+  reloadPage()
 }
 
 function loadSpreads() {
@@ -211,6 +212,11 @@ function loadSave(string) {
   spread = JSON.parse(window.localStorage.getItem(string))
   drawSpread()
   console.log(string)
+}
+
+function reloadPage() {
+  sessionStorage.setItem("reload", "true");
+  document.location.reload();
 }
 
 function randomIdArray(_number) {
