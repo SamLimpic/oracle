@@ -60,13 +60,14 @@ label{
 input{
   width: 100%;
   padding: .375rem .75rem;
-  font-size: 1rem;
+  font-size: 1em;
   color: var(--light);
   background-color: transparent;
   background-clip: padding-box;
   border: none;
   border-bottom: 1px solid var(--primary);
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  font-family : inherit;
 }
 input:focus{
   outline: none;
@@ -79,7 +80,7 @@ button{
   border-radius: var(--corners);
   box-shadow: var(--shadow);
   text-transform: uppercase;
-  transition: all .2s ease;
+  transition: all 1s ease;
   cursor: pointer;
   padding: .5em;
   font-family : inherit;
@@ -107,7 +108,7 @@ button{
   padding: .5em;
   box-shadow: var(--shadow);
   border-radius: var(--corners);
-  transition: all .5s ease;
+  transition: all 1s ease;
 }
 
 .rune-card-upright:hover {
@@ -123,7 +124,7 @@ button{
   padding: .5em;
   box-shadow: var(--shadow);
   border-radius: var(--corners);
-  transition: all .5s ease;
+  transition: all 1s ease;
 }
 
 .rune-card-inverted:hover {
@@ -139,7 +140,7 @@ button{
   padding: .5em;
   box-shadow: var(--shadow);
   border-radius: var(--corners);
-  transition: all .5s ease;
+  transition: all 1s ease;
 }
 
 .rune-card-weird:hover {
@@ -150,7 +151,7 @@ button{
 .rune-label{
   border: none;
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 1s ease;
   min-width: 200px;
   max-width: 200px;
   min-height: 200px;
@@ -163,7 +164,9 @@ button{
   padding: 10px;
   border: none;
   cursor: pointer;
-  transition: all .5s ease;
+  min-width: 200px;
+  max-width: 200px;
+  transition: all 1s ease;
 }
 
 .label-upright{
@@ -200,6 +203,10 @@ button{
   color: var(--text-color);
 }
 
+.medium-font{
+  font-size: 20pt;
+}
+
 .large-font{
   font-size: 28pt;
 }
@@ -215,7 +222,7 @@ button{
 .glow{
   border-radius: 50%;
   box-shadow: 0 0 30px 5px var(--primary);
-  transition: all .5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .glow:hover {
@@ -225,7 +232,7 @@ button{
 .glow-50{
   border-radius: 50%;
   box-shadow: 0 0 15px 1px var(--primary);
-  transition: all .5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .glow-50:hover{
@@ -234,7 +241,7 @@ button{
 
 .glow-box{
   box-shadow: 0 0 20px 5px var(--primary);
-  transition: all .5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .glow-box:hover{
@@ -243,7 +250,7 @@ button{
 
 .upright{
   filter: drop-shadow(0 0 10px var(--primary-lighten)) contrast(1);
-  transition: all .5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .rune-card-upright:hover > .upright {
@@ -252,7 +259,7 @@ button{
 
 .inverted{
   filter: drop-shadow(0 0 10px var(--danger-lighten)) contrast(1);
-  transition: all .5s ease-in-out;
+  transition: all 1s ease-in-out;
   transform: rotate(180deg); 
 }
 
@@ -262,7 +269,7 @@ button{
 
 .weird {
   filter: drop-shadow(0 0 10px var(--light-darken)) contrast(1);
-  transition: all .5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .rune-card-weird:hover > .weird {
@@ -386,7 +393,7 @@ button{
 
 .action{
   cursor: pointer;
-  transition: all .3s linear;
+  transition: all 1s linear;
   filter: brightness(.8);
 }
 .action:hover{
@@ -403,12 +410,14 @@ button{
   padding: 16px;
   border: none;
   cursor: pointer;
-  transition: all .5s ease;
+  transition: all 1s ease;
+  min-width: 300px;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
+  z-index: 10;
 }
 
 .dropdown-content {
@@ -427,7 +436,7 @@ button{
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-   transition: all .5s ease;
+   transition: all 1s ease;
 }
 
 .dropdown-content a:hover {background-color: var(--primary-lighten); color: var(--text-color);}

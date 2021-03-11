@@ -4,311 +4,333 @@ let futhark = [
   {
     id: 0,
     name: "Wyrd",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 1,
     name: "Fehu",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 2,
     name: "Uruz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 3,
     name: "Thurisaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 4,
     name: "Ansuz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 5,
     name: "Raido",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 6,
     name: "Kenaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 7,
     name: "Gebo",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 8,
     name: "Wunjo",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 9,
     name: "Hagalaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 10,
     name: "Nauthiz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 11,
     name: "Isa",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 12,
     name: "Jera",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 13,
     name: "Eihwaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 14,
     name: "Perdhro",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 15,
     name: "Elhaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 16,
     name: "Sowilo",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 17,
     name: "Tiwaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 18,
     name: "Berkano",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 19,
     name: "Ehwaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 20,
     name: "Mannaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 21,
     name: "Laguz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 22,
     name: "Ingwaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 23,
     name: "Dagaz",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
   },
 
   {
     id: 24,
     name: "Othila",
-    value1: "",
-    value2: "",
-    value3: "",
+    upright: "",
     murkstave: "",
-  },
-];
+  }
+]
 
-let rune = {
-  position: "",
-  id: "",
-  name: "",
-  value1: "",
-  value2: "",
-  value3: "",
+let rune = {}
+
+let spread = []
+
+let idArray = []
+
+function saveSpread(event) {
+  event.preventDefault()
+  let form = event.target
+  let name = form.name.value
+  window.localStorage.setItem(name, JSON.stringify(spread))
+  form.reset()
 }
 
-let spread = [];
+function loadSpreads() {
+  let saveData = []
+  for (let i = 0; i < localStorage.length; i++) {
+    saveData.push(window.localStorage.key(i))
+  }
+  let saveDataListElement = document.getElementById("saved-readings")
+  let saveDataTemplate = ""
+  saveData.forEach(draw => {
+    let drawIndex = saveData.indexOf(draw)
+    saveDataTemplate += `
+      <a onClick= loadSave("${saveData[drawIndex]}")> ${saveData[drawIndex]} </a>
+    `
+  })
+  saveDataListElement.innerHTML = saveDataTemplate
+}
 
-let idArray = [];
+function loadSave(string) {
+  spread = JSON.parse(window.localStorage.getItem(string))
+  drawSpread()
+  console.log(string)
+}
 
-function saveSpread() { }
-
-function loadSpread() { }
-
-function randomIdArray() {
-  let arrayLength = 7
+function randomIdArray(_number) {
+  let arrayLength = _number
   idArray = []
   for (let i = 0; i < arrayLength; i++) {
-    let id = Math.floor(Math.random() * 24);
+    let id = Math.floor(Math.random() * 24)
     if (idArray.indexOf(id) == -1) {
-      idArray.push(id);
+      idArray.push(id)
     }
     else
-      i--;
+      i--
   }
 }
 
-function drawThree() {
-  document.getElementById("threeSpread").classList.remove("hidden")
-  document.getElementById("dropdown").classList.add("hidden")
+function murkState() {
+  let state = "false"
+  if (Math.floor(Math.random() * 10) >= 6.66) {
+    state = "true"
+  }
+  console.log(Math.floor(Math.random() * 10))
+}
+
+function runePosition(_number) {
+  let spreadName = ""
+  if (_number == 1) {
+    spreadName = "Single Rune Reading"
+    spread[0].position = "Daily Draw"
+  } else if (_number == 2) {
+    spreadName = "Two Rune Reading"
+    spread[0].position = "Circumstances"
+    spread[1].position = "Outcome"
+  } else if (_number == 3) {
+    spreadName = "Three Rune Reading"
+    spread[0].position = "Past"
+    spread[1].position = "Present"
+    spread[2].position = "Future"
+  } else if (_number == 4) {
+    spreadName = "Four Rune Reading"
+    spread[0].position = "Placeholder"
+    spread[1].position = "Placeholder"
+    spread[2].position = "Placeholder"
+    spread[3].position = "Placeholder"
+  } else if (_number == 5) {
+    spreadName = "Five Rune Reading"
+    spread[0].position = "Placeholder"
+    spread[1].position = "Placeholder"
+    spread[2].position = "Placeholder"
+    spread[3].position = "Placeholder"
+    spread[4].position = "Placeholder"
+  } else if (_number == 7) {
+    spreadName = "Seven Rune Reading"
+    spread[0].position = "Placeholder"
+    spread[1].position = "Placeholder"
+    spread[2].position = "Placeholder"
+    spread[3].position = "Placeholder"
+    spread[4].position = "Placeholder"
+    spread[5].position = "Placeholder"
+    spread[6].position = "Placeholder"
+  } else if (_number == 9) {
+    spreadName = "Nine Rune Reading"
+    spread[0].position = "Placeholder"
+    spread[1].position = "Placeholder"
+    spread[2].position = "Placeholder"
+    spread[3].position = "Placeholder"
+    spread[4].position = "Placeholder"
+    spread[5].position = "Placeholder"
+    spread[6].position = "Placeholder"
+    spread[7].position = "Placeholder"
+    spread[8].position = "Placeholder"
+  }
+  document.getElementById("spread-name").innerText = spreadName
+}
+
+function getStarted() {
+  document.getElementById("save-button").classList.remove("hidden")
   document.getElementById("welcome").classList.add("hidden")
-  let rune = {};
-  randomIdArray();
-  rune = {
-    position: "Past",
-    id: futhark[idArray[0]].id,
-    name: futhark[idArray[0]].name,
-    value1: futhark[idArray[0]].value1,
-    value2: futhark[idArray[0]].value2,
-    value3: futhark[idArray[0]].value3,
-    murkstave: futhark[idArray[0]].murkstave
+  document.getElementById("load-readings").classList.add("hidden")
+}
+
+function generateSpread(_number) {
+  spread = []
+  let spreadName = ""
+  randomIdArray(_number)
+  for (let i = 0; i < _number; i++) {
+    spread[i] = {
+      reading: spreadName,
+      murk: "false",
+      position: "",
+      id: futhark[idArray[i]].id,
+      name: futhark[idArray[i]].name,
+      upright: futhark[idArray[i]].upright,
+      murkstave: futhark[idArray[i]].murkstave
+    }
+    if (Math.floor(Math.random() * 10) >= 6.66) {
+      spread[i].murk = "true"
+    }
   }
-  spread.push(rune)
-  rune = {
-    position: "Present",
-    id: futhark[idArray[1]].id,
-    name: futhark[idArray[1]].name,
-    value1: futhark[idArray[1]].value1,
-    value2: futhark[idArray[1]].value2,
-    value3: futhark[idArray[1]].value3,
-    murkstave: futhark[idArray[1]].murkstave
-  }
-  spread.push(rune)
-  rune = {
-    position: "Future",
-    id: futhark[idArray[2]].id,
-    name: futhark[idArray[2]].name,
-    value1: futhark[idArray[2]].value1,
-    value2: futhark[idArray[2]].value2,
-    value3: futhark[idArray[2]].value3,
-    murkstave: futhark[idArray[2]].murkstave
-  }
-  spread.push(rune)
+  runePosition(_number)
   drawSpread()
 }
 
 function drawSpread() {
+  getStarted()
   let spreadListElement = document.getElementById("spread")
   let spreadTemplate = ""
-  spread.forEach(rune => {
+  let length = spread.length
+  for (let i = 0; i < length; i++) {
+    let rune = spread[i]
     let runeCard = 'rune-card-upright'
     let labelColor = 'label-upright'
     let glow = 'upright'
     let hide = 'hidden'
-    if (Math.floor(Math.random() * 10) >= 7) {
+    let show = ''
+    if (rune.murk == "true" && rune.name != "Wyrd") {
       runeCard = 'rune-card-inverted'
       labelColor = 'label-inverted'
       glow = 'inverted'
       hide = 'text-danger'
+      show = 'hidden'
     }
     if (rune.name == "Wyrd") {
       runeCard = 'rune-card-weird'
@@ -325,13 +347,16 @@ function drawSpread() {
         <p class = "text-center">${rune.name}</p>
       </label>
       <button class="label-text rune-label center ${labelColor}" disabled>
-        <p class = > ${rune.value1} Sample Text </p>
-        <p class = > ${rune.value2} With Some Fun Stuff</p>
-        <p class = > ${rune.value3} Etc </p>
-        <p class = ${hide}> ${rune.murkstave} </p>
+        <p class = ${show}> ${rune.upright} Throw in a lot of sample text that will probably emcompass several lines of code to test the card capacity </p>
+        <p class = ${hide}> ${rune.murkstave} Throw in a lot of sample text that will probably emcompass several lines of code to test the card capacity </p>
       </button>
     </div>
   `
-  })
+
+  }
   spreadListElement.innerHTML = spreadTemplate
 }
+
+
+
+loadSpreads()

@@ -14,56 +14,52 @@
 
 <body>
   <header class="bg-dark d-flex align-items-center p-1 space-between">
-    <img class="glow-50" src="rune_logo.png" height="75" alt="Rune Logo">
-    <div id="threeSpread" class="dropdown shadow hidden" style="float:right;">
-      <button class="large-font dropbtn" disabled>
-        <a>Your Three Rune Spread</a>
-      </button>
 
-    </div>
-    <div id="fiveSpread" class="dropdown shadow hidden" style="float:right;">
+    <div id="save-button" class="dropdown shadow hidden">
       <button class="large-font dropbtn" disabled>
-        <a>Your Five Rune Spread</a>
-      </button>
-    </div>
-    <div id="sevenSpread" class="dropdown shadow hidden" style="float:right;">
-      <button class="large-font dropbtn" disabled>
-        <a>Your Seven Rune Spread</a>
-      </button>
-    </div>
-    <div id="dropdown" class="dropdown shadow" style="float:right;">
-      <button class="large-font dropbtn" disabled>
-        <a>Ask Your Virtual Oracle</a>
+        <a> Save your Reading </a>
       </button>
       <div class="dropdown-content glow-box">
-        <a onclick=drawThree()>How do I feel about this?</a>
-        <a onclick=>How can I accomplish this?</a>
-        <a onclick=>How should I handle this?</a>
-        <a onclick=>What do I want out of this?</a>
-        <a onclick=>What can I do for this?</a>
-        <a onclick=>What should I do about this?</a>
-        <a onclick=>Why am I feeling this?</a>
-        <a onclick=>Why should I do this?</a>
-        <a onclick=>Why did this happen?</a>
-        <a onclick=>__________?</a>
+        <form class="d-flex" onsubmit=saveSpread(event)>
+          <input id="save" placeholder="Save your Reading" name="name" type="text" />
+          <button class="text-center medium-font" type="submit">
+            <large>&nbsp;ᛥ&nbsp;</large>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div id="load-readings" class="dropdown">
+      <button class="large-font dropbtn shadow">
+        <a>Your Saved Readings</a>
+      </button>
+      <div id="saved-readings" class="dropdown-content glow-box">
+        <a></a>
+      </div>
+    </div>
+
+    <div>
+      <img class="glow-50" src="rune_logo.png" height="75" alt="Rune Logo">
+    </div>
+
+    <div id="question-list" class="dropdown shadow" style="float:right;">
+      <button class="large-font dropbtn" disabled>
+        <a id="spread-name">Ask Your Virtual Oracle</a>
+      </button>
+      <div class="dropdown-content glow-box">
+        <a onclick=generateSpread(1)>One</a>
+        <a onclick=generateSpread(2)>Two</a>
+        <a onclick=generateSpread(3)>Three</a>
+        <a onclick=generateSpread(4)>Four</a>
+        <a onclick=generateSpread(5)>Five</a>
+        <a onclick=generateSpread(7)>Seven</a>
+        <a onclick=generateSpread(9)>Nine</a>
       </div>
     </div>
   </header>
   <main class="container">
     <div id="welcome" class="d-flex justify-content-center">
       <div class="card p-1 mt-2 text-center">
-        <div id="saved-readings" class="dropdown">
-          <button class="large-font dropbtn shadow" disabled>
-            <a>View Your Saved Readings</a>
-          </button>
-          <div class="dropdown-content glow-box">
-            <a>Reading 1</a>
-            <a>Reading 2</a>
-            <a>Reading 3</a>
-            <a>Reading 4</a>
-            <a>Reading 5</a>
-          </div>
-        </div>
         <div class="mt-1">
           <b class="text-center">
             <large>Welcome to Virtual Oracle</large>
@@ -76,7 +72,7 @@
       </div>
     </div>
     <div class="m-1">
-      <div id="spread" class="d-flex align-items-center justify-content-center flex-wrap">
+      <div id="spread" class="mt-3 mb-3 d-flex align-items-center justify-content-center">
       </div>
     </div>
   </main>
