@@ -16,12 +16,12 @@
   <header class="bg-dark d-flex align-items-center p-1 space-between">
 
     <div id="save-button" class="dropdown shadow hidden">
-      <button class="large-font dropbtn" disabled>
+      <button id="saved-reading" class="large-font dropbtn" disabled>
         <a> Save your Reading </a>
       </button>
-      <div class="dropdown-content glow-box">
+      <div id="save-input" class="dropdown-content glow-box">
         <form class="d-flex" onsubmit=saveSpread(event)>
-          <input id="save" placeholder="Save your Reading" name="name" type=string required />
+          <input id="inputId" placeholder="Save your Reading" name="name" text="text" required />
           <button class="text-center medium-font" type="submit">
             <large>&nbsp;ᛥ&nbsp;</large>
           </button>
@@ -39,7 +39,7 @@
     </div>
 
     <div>
-      <img class="glow-50" src="rune_logo.png" height="75" alt="Rune Logo">
+      <img onclick=reloadPage() class="glow-50" src="rune_logo.png" height="75" alt="Rune Logo">
     </div>
 
     <div id="question-list" class="dropdown shadow" style="float:right;">
@@ -47,22 +47,22 @@
         <a id="spread-name">Ask Your Virtual Oracle</a>
       </button>
       <div id="spread-list" class="dropdown-content glow-box">
-        <a onclick=generateSpread(1)>One</a>
-        <a onclick=generateSpread(2)>Two</a>
-        <a onclick=generateSpread(3)>Three</a>
-        <a onclick=generateSpread(4)>Four</a>
-        <a onclick=generateSpread(5)>Five</a>
-        <a onclick=generateSpread(7)>Seven</a>
-        <a onclick=generateSpread(9)>Nine</a>
+        <a onclick=generateSpread(1)>Rune of the Day</a>
+        <a onclick=generateSpread(2)>What Will Be</a>
+        <a onclick=generateSpread(3)>Past Present Future</a>
+        <a onclick=generateSpread(4)>Four Points</a>
+        <a onclick=generateSpread(5)>Runic Cross</a>
+        <a onclick=generateSpread(7)>Long Journey</a>
+        <a onclick=generateSpread(9)>Nine Realms</a>
       </div>
       <div id="redraw" class="dropdown-content glow-box hidden">
-        <a id="one" class="hidden" onclick=generateSpread(1)>Redraw This Spread</a>
-        <a id="two" class="hidden" onclick=generateSpread(2)>Redraw This Spread</a>
-        <a id="three" class="hidden" onclick=generateSpread(3)>Redraw This Spread</a>
-        <a id="four" class="hidden" onclick=generateSpread(4)>Redraw This Spread</a>
-        <a id="five" class="hidden" onclick=generateSpread(5)>Redraw This Spread</a>
-        <a id="seven" class="hidden" onclick=generateSpread(7)>Redraw This Spread</a>
-        <a id="nine" class="hidden" onclick=generateSpread(9)>Redraw This Spread</a>
+        <a id="one" class="hidden" onclick=redraw(1)>Redraw This Spread</a>
+        <a id="two" class="hidden" onclick=redraw(2)>Redraw This Spread</a>
+        <a id="three" class="hidden" onclick=redraw(3)>Redraw This Spread</a>
+        <a id="four" class="hidden" onclick=redraw(4)>Redraw This Spread</a>
+        <a id="five" class="hidden" onclick=redraw(5)>Redraw This Spread</a>
+        <a id="seven" class="hidden" onclick=redraw(7)>Redraw This Spread</a>
+        <a id="nine" class="hidden" onclick=redraw(9)>Redraw This Spread</a>
       </div>
     </div>
   </header>
@@ -80,10 +80,17 @@
         </div>
       </div>
     </div>
-    <div>
-      <div id="spread" class="mt-3 mb-3 d-flex align-items-center justify-content-center">
+    <div class="mt-3 mb-3 d-flex column">
+      <div id="spread-one" class="d-flex align-items-center justify-content-center">
+      </div>
+
+      <div id="spread-two" class="d-flex align-items-center justify-content-center">
+      </div>
+
+      <div id="spread-three" class="d-flex align-items-center justify-content-center">
       </div>
     </div>
+  </main>
   </main>
   <footer class="card bg-dark p-2 d-flex align-items-center justify-content-center">
     Created with <span style="color: var(--primary)">

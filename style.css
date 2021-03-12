@@ -103,11 +103,6 @@ button{
 .rune-card-upright{
   background-color: var(--primary-darken);
   color: var(--light);
-  width: 250px;
-  height: 500px;
-  padding: .5em;
-  box-shadow: var(--shadow);
-  border-radius: var(--corners);
   transition: all 1s ease;
 }
 
@@ -119,11 +114,6 @@ button{
 .rune-card-inverted{
   background-color: var(--danger);
   color: var(--light);
-  width: 250px;
-  height: 500px;
-  padding: .5em;
-  box-shadow: var(--shadow);
-  border-radius: var(--corners);
   transition: all 1s ease;
 }
 
@@ -135,11 +125,6 @@ button{
 .rune-card-weird{
   background-color: var(--dark-lighten);
   color: var(--light);
-  width: 250px;
-  height: 500px;
-  padding: .5em;
-  box-shadow: var(--shadow);
-  border-radius: var(--corners);
   transition: all 1s ease;
 }
 
@@ -148,55 +133,33 @@ button{
   color: var(--text-color);
 }
 
-.rune-label{
-  border: none;
-  cursor: pointer;
-  transition: all 1s ease;
-  min-width: 200px;
-  max-width: 200px;
-  min-height: 200px;
-  max-height: 200px;
-}
-
-.position-label {
-  background-color: var(--primary-lighten);
-  color: var(--text-color);
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  min-width: 200px;
-  max-width: 200px;
-  transition: all 1s ease;
+.rune-text{
+  font-size: 26pt;
 }
 
 .label-upright{
   background-color: var(--primary-lighten);
   color: var(--text-color);
+  display: none;
 }
 
-.rune-card-upright:hover > .label-upright  {background-color: var(--primary-darken); color: var(--light);}
+.rune-card:hover > .label-upright  {background-color: var(--primary-darken); color: var(--light); display: block;}
 
 .label-inverted{
   background-color: var(--danger-lighten);
   color: var(--text-color);
+  display: none;
 }
 
-.rune-card-inverted:hover > .label-inverted {background-color: var(--danger); color: var(--light);}
+.rune-card:hover > .label-inverted {background-color: var(--danger); color: var(--light); display: block;}
 
 .label-weird{
   background-color: var(--light-darken);
   color: var(--text-color);
+  display: none;
 }
 
-.rune-card-weird:hover > .label-weird {background-color: var(--dark-lighten); color: var(--light);}
-
-.rune-text{
-  font-size: 26pt;
-}
-
-.label-text{
-  font-size: 16pt;
-}
+.rune-card:hover > .label-weird {background-color: var(--dark-lighten); color: var(--light); display: block;}
 
 .title-text{
   font-size: 24pt;
@@ -253,8 +216,8 @@ button{
   transition: all 1s ease-in-out;
 }
 
-.rune-card-upright:hover > .upright {
-  filter: drop-shadow(0 0 20px var(--primary-darken)) contrast(2);
+.rune-card:hover > .upright {
+  filter: drop-shadow(0 0 20px var(--primary-darken)) contrast(2); display: none;
 }
 
 .inverted{
@@ -263,8 +226,8 @@ button{
   transform: rotate(180deg); 
 }
 
-.rune-card-inverted:hover > .inverted {
-  filter: drop-shadow(0 0 20px var(--danger)) contrast(2);
+.rune-card:hover > .inverted {
+  filter: drop-shadow(0 0 20px var(--danger)) contrast(2); display: none;
 }
 
 .weird {
@@ -272,8 +235,8 @@ button{
   transition: all 1s ease-in-out;
 }
 
-.rune-card-weird:hover > .weird {
-  filter: drop-shadow(0 0 20px var(--dark-lighten)) contrast(2);
+.rune-card:hover > .weird {
+  filter: drop-shadow(0 0 20px var(--dark-lighten)) contrast(2); display: none;
 }
 
 .text-shadow{
@@ -310,6 +273,11 @@ button{
 }
 .d-flex.justify-content-center{
   justify-content: center;
+}
+
+.d-flex.column {
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .mt-1{
@@ -384,11 +352,13 @@ button{
   width: 30%;
 }
 
+.break {
+white-space: pre-line;}
+
 .center{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
 }
 
 .action{
@@ -442,3 +412,79 @@ button{
 .dropdown-content a:hover {background-color: var(--primary-lighten); color: var(--text-color);}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: var(--primary); color: var(--light);}
+
+.name-card {
+  display: none;
+}
+
+.rune-card:hover > .name-card {display: block;}
+
+.position-card {
+  display: block;
+}
+
+.rune-card:hover > .position-card {display: none;}
+
+.rune-img {
+  width: 50%;
+  height: 50%;
+  margin-top: 1.5em;
+}
+
+.rune-card{
+  width: 300px;
+  height: 300px;
+  padding: .5em;
+  box-shadow: var(--shadow);
+  border-radius: var(--corners);
+  transition: all 1s ease;
+}
+
+.position-label {
+  border: none;
+  cursor: pointer;
+  min-width:50%;
+  height:fit-content;
+  transition: all 1s ease;
+}
+
+.rune-description{
+  border: 50%;
+  cursor: pointer;
+  transition: all 1s ease;
+  margin: 1.5em 0;
+  width: auto;
+  height: 60%;
+  display: none;
+}
+
+.description-upright{
+  background-color: var(--primary-lighten);
+  color: var(--text-color);
+  display: none;
+  transition: all 1s ease;
+}
+
+.rune-card:hover > .description-upright  {background-color: var(--primary-darken); color: var(--light); display: block;}
+
+.description-inverted{
+  background-color: var(--danger-lighten);
+  color: var(--text-color);
+  display: none;
+  transition: all 1s ease;
+}
+
+.rune-card:hover > .description-inverted {background-color: var(--danger); color: var(--light); display: block;}
+
+.description-weird{
+  background-color: var(--light-darken);
+  color: var(--text-color);
+  display: none;
+  transition: all 1s ease;
+}
+
+.rune-card:hover > .description-weird {background-color: var(--dark-lighten); color: var(--light); display: block;}
+
+.label-text{
+  font-size: 16pt;
+}
