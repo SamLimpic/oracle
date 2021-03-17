@@ -5,9 +5,9 @@
   --primary: #35b68b;
   --primary-lighten: #4EE0AF;
   --primary-darken: #0a5c40;
-  --secondary-darken: hsl(190, 55%, 46%);
-  --secondary: hsl(190, 70%, 59%);
-  --secondary-lighten: hsl(190, 80%, 20%);
+  --secondary-darken: hsl(185, 55%, 46%);
+  --secondary: hsl(185, 70%, 59%);
+  --secondary-lighten: hsl(185, 80%, 20%);
   --bg: #e6f0ec;
   --shadow: 5px 5px 5px rgba(49, 49, 49, 0.5);
   --corners: 0;
