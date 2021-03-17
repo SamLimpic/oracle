@@ -1,5 +1,5 @@
 
-
+//#region Resources
 let futhark = [
   {
     id: 0,
@@ -177,6 +177,54 @@ let futhark = [
   }
 ]
 
+let meaning = [
+  {
+    card1: ""
+  },
+  {
+    card1: "",
+    card2: ""
+  },
+  {
+    card1: "",
+    card2: "",
+    card3: ""
+  },
+  {
+    card1: "",
+    card2: "",
+    card3: "",
+    card4: "",
+  },
+  {
+    card1: "",
+    card2: "",
+    card3: "",
+    card4: "",
+    card5: "",
+  },
+  {
+    card1: "",
+    card2: "",
+    card3: "",
+    card4: "",
+    card5: "",
+    card6: "",
+    card7: ""
+  },
+  {
+    card1: "",
+    card2: "",
+    card3: "",
+    card4: "",
+    card5: "",
+    card6: "",
+    card7: "",
+    card8: "",
+    card9: ""
+  },
+]
+
 let rune = {}
 
 let spread = []
@@ -188,6 +236,7 @@ let input = document.getElementById("inputId");
 input.oninput = function (e) {
   e.target.value = e.target.value.replace(' ', '_');
 }
+//#endregion
 
 function saveSpread(event) {
   event.preventDefault()
@@ -218,11 +267,6 @@ function loadSave(string) {
   drawSpread()
   document.getElementById("saved-reading").innerText = "Your Saved Reading"
   document.getElementById("save-input").classList.add("hidden")
-}
-
-function redraw(_number) {
-  loadSpreads()
-  generateSpread(_number)
 }
 
 function reloadPage() {
@@ -272,10 +316,9 @@ function nameLength() {
   document.getElementById("spread-name").innerText = spreadName
 }
 
-
 function runePosition() {
-  length = spread.length
   let spreadId = ""
+  length = spread.length
   if (length == 1) {
     spreadId = "one"
     spread[0].position = "Daily Draw"
@@ -322,8 +365,6 @@ function runePosition() {
     spread[7].position = "Svartalheim"
     spread[8].position = "Jotunheim"
   }
-  document.getElementById("redraw").classList.remove("hidden")
-  document.getElementById(spreadId).classList.remove("hidden")
 }
 
 function getStarted() {
@@ -331,6 +372,8 @@ function getStarted() {
   document.getElementById("welcome").classList.add("hidden")
   document.getElementById("load-readings").classList.add("hidden")
   document.getElementById("spread-list").classList.add("hidden")
+  document.getElementById("meaning").classList.remove("hidden")
+  document.getElementById("return").classList.add("hidden")
 }
 
 function generateSpread(_number) {
@@ -386,7 +429,7 @@ function drawSpread() {
       descriptionColor = 'description-weird'
       glow = 'weird'
     }
-    if ((length <= 3) || (length == 4 && rune.place == 0) || (length == 5 && rune.place <= 1) || (length == 7 && rune.place <= 1) || (length == 9 && rune.place <= 2)) {
+    if ((length <= 3) || (length == 4 && i == 0) || (length == 5 && i <= 1) || (length == 7 && i <= 1) || (length == 9 && i <= 2)) {
       spreadOneTemplate += `
     <div class="rune-card ${runeCard} m-1 shadow">
 
@@ -407,7 +450,7 @@ function drawSpread() {
   
     </div>
   `
-    } else if ((length == 4 && rune.place <= 2) || (length == 5 && rune.place == 2) || (length == 7 && rune.place <= 4) || (length == 9 && rune.place <= 5)) {
+    } else if ((length == 4 && i <= 2) || (length == 5 && i == 2) || (length == 7 && i <= 4) || (length == 9 && i <= 5)) {
       spreadTwoTemplate += `
     <div class="rune-card ${runeCard} m-1 shadow">
 
@@ -428,7 +471,7 @@ function drawSpread() {
   
     </div>
   `
-    } else if ((length == 4 && rune.place == 3) || (length == 5 && rune.place <= 4) || (length == 7 && rune.place <= 6) || (length == 9 && rune.place <= 8)) {
+    } else if ((length == 4 && i == 3) || (length == 5 && i <= 4) || (length == 7 && i <= 6) || (length == 9 && i <= 8)) {
       spreadThreeTemplate += `
     <div class="rune-card ${runeCard} m-1 shadow">
 
@@ -454,6 +497,69 @@ function drawSpread() {
   spreadOneListElement.innerHTML = spreadOneTemplate
   spreadTwoListElement.innerHTML = spreadTwoTemplate
   spreadThreeListElement.innerHTML = spreadThreeTemplate
+}
+
+function drawMeaning() {
+  document.getElementById("meaning").classList.add("hidden")
+  document.getElementById("return").classList.remove("hidden")
+  let spreadOneListElement = document.getElementById("spread-one")
+  let spreadOneTemplate = ""
+  let spreadTwoListElement = document.getElementById("spread-two")
+  let spreadTwoTemplate = ""
+  let spreadThreeListElement = document.getElementById("spread-three")
+  let spreadThreeTemplate = ""
+  let length = spread.length
+  for (let i = 0; i < length; i++) {
+    let meaningSpread = meaning[i]
+    let info = meaningSpread[i]
+    let infoPosition = spread[i].position
+    if ((length <= 3) || (length == 4 && i == 0) || (length == 5 && i <= 1) || (length == 7 && i <= 1) || (length == 9 && i <= 2)) {
+      spreadOneTemplate += `
+    <div class="rune-card meaning-card m-1 shadow">
+
+      <button class="title-text center mb-1 meaning-label" disabled>
+        <large> ${infoPosition}</large>
+      </button>
+
+      <button class="label-text center meaning-description" disabled>
+        <p> ${info} Throw in a lot of sample text that will probably emcompass several lines of code to test the card capacity </p>
+      </button>
+  
+    </div>
+  `
+    } else if ((length == 4 && i <= 2) || (length == 5 && i == 2) || (length == 7 && i <= 4) || (length == 9 && i <= 5)) {
+      spreadTwoTemplate += `
+    <div class="rune-card meaning-card m-1 shadow">
+
+      <button class="title-text center mb-1 meaning-label" disabled>
+        <large> ${infoPosition}</large>
+      </button>
+
+      <button class="label-text center meaning-description" disabled>
+        <p> ${info} Throw in a lot of sample text that will probably emcompass several lines of code to test the card capacity </p>
+      </button>
+  
+    </div>
+  `
+    } else if ((length == 4 && i == 3) || (length == 5 && i <= 4) || (length == 7 && i <= 6) || (length == 9 && i <= 8)) {
+      spreadThreeTemplate += `
+    <div class="rune-card meaning-card m-1 shadow">
+
+      <button class="title-text center mb-1 meaning-label" disabled>
+        <large> ${infoPosition}</large>
+      </button>
+
+      <button class="label-text center meaning-description" disabled>
+        <p> ${info} Throw in a lot of sample text that will probably emcompass several lines of code to test the card capacity </p>
+      </button>
+  
+    </div>
+  `
+    }
+    spreadOneListElement.innerHTML = spreadOneTemplate
+    spreadTwoListElement.innerHTML = spreadTwoTemplate
+    spreadThreeListElement.innerHTML = spreadThreeTemplate
+  }
 }
 
 loadSpreads()

@@ -42,7 +42,7 @@
       <img onclick=reloadPage() class="glow-50" src="rune_logo.png" height="75" alt="Rune Logo">
     </div>
 
-    <div id="question-list" class="dropdown shadow" style="float:right;">
+    <div id="question-list" class="dropdown shadow float">
       <button class="large-font dropbtn" disabled>
         <a id="spread-name">Ask Your Virtual Oracle</a>
       </button>
@@ -55,18 +55,16 @@
         <a onclick=generateSpread(7)>Long Journey</a>
         <a onclick=generateSpread(9)>Nine Realms</a>
       </div>
-      <div id="redraw" class="dropdown-content glow-box hidden">
-        <a id="one" class="hidden" onclick=redraw(1)>Redraw This Spread</a>
-        <a id="two" class="hidden" onclick=redraw(2)>Redraw This Spread</a>
-        <a id="three" class="hidden" onclick=redraw(3)>Redraw This Spread</a>
-        <a id="four" class="hidden" onclick=redraw(4)>Redraw This Spread</a>
-        <a id="five" class="hidden" onclick=redraw(5)>Redraw This Spread</a>
-        <a id="seven" class="hidden" onclick=redraw(7)>Redraw This Spread</a>
-        <a id="nine" class="hidden" onclick=redraw(9)>Redraw This Spread</a>
+      <div id="meaning" class="dropdown-content glow-box hidden">
+        <a onclick=drawMeaning()>What does this mean?</a>
+      </div>
+      <div id="return" class="dropdown-content glow-box hidden">
+        <a onclick=drawSpread()>Back to your reading</a>
       </div>
     </div>
   </header>
   <main class="container">
+
     <div id="welcome" class="d-flex justify-content-center">
       <div class="card p-1 mt-3 text-center">
         <div class="mt-1">
@@ -80,17 +78,13 @@
         </div>
       </div>
     </div>
+
     <div class="mt-3 mb-3 d-flex column">
-      <div id="spread-one" class="d-flex align-items-center justify-content-center">
-      </div>
-
-      <div id="spread-two" class="d-flex align-items-center justify-content-center">
-      </div>
-
-      <div id="spread-three" class="d-flex align-items-center justify-content-center">
-      </div>
+      <div id="spread-one" class="d-flex align-items-center justify-content-center"></div>
+      <div id="spread-two" class="d-flex align-items-center justify-content-center"></div>
+      <div id="spread-three" class="d-flex align-items-center justify-content-center"></div>
     </div>
-  </main>
+
   </main>
   <footer class="card bg-dark p-2 d-flex align-items-center justify-content-center">
     Created with <span style="color: var(--primary)">
