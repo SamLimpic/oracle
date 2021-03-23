@@ -231,6 +231,8 @@ let spread = []
 
 let idArray = []
 
+let spreadLength = spread.length
+
 let input = document.getElementById("inputId");
 
 input.oninput = function (e) {
@@ -297,55 +299,48 @@ function murkState() {
 
 function nameLength() {
   let spreadName = rune.reading
-  length = spread.length
-  if (length == 1) {
+  spreadLength = spread.length
+  if (spreadLength == 1) {
     spreadName = "Rune of the Day"
-  } else if (length == 2) {
+  } else if (spreadLength == 2) {
     spreadName = "What Will Be"
-  } else if (length == 3) {
+  } else if (spreadLength == 3) {
     spreadName = "Past Present Future"
-  } else if (length == 4) {
+  } else if (spreadLength == 4) {
     spreadName = "Four Points"
-  } else if (length == 5) {
+  } else if (spreadLength == 5) {
     spreadName = "Runic Cross"
-  } else if (length == 7) {
+  } else if (spreadLength == 7) {
     spreadName = "Long Journey"
-  } else if (length == 9) {
+  } else if (spreadLength == 9) {
     spreadName = "Nine Realms"
   }
   document.getElementById("spread-name").innerText = spreadName
 }
 
 function runePosition() {
-  let spreadId = ""
-  length = spread.length
-  if (length == 1) {
-    spreadId = "one"
+  spreadLength = spread.length
+  if (spreadLength == 1) {
     spread[0].position = "Daily Draw"
-  } else if (length == 2) {
-    spreadId = "two"
+  } else if (spreadLength == 2) {
     spread[0].position = "Circumstances"
     spread[1].position = "Outcome"
-  } else if (length == 3) {
-    spreadId = "three"
+  } else if (spreadLength == 3) {
     spread[0].position = "Past"
     spread[1].position = "Present"
     spread[2].position = "Future"
-  } else if (length == 4) {
-    spreadId = "four"
+  } else if (spreadLength == 4) {
     spread[0].position = "North"
     spread[1].position = "East"
     spread[2].position = "West"
     spread[3].position = "South"
-  } else if (length == 5) {
-    spreadId = "five"
+  } else if (spreadLength == 5) {
     spread[0].position = "Past Influence"
     spread[1].position = "Obstacles"
     spread[2].position = "Outcome"
     spread[3].position = "Benefits"
     spread[4].position = "Future Possibilities"
-  } else if (length == 7) {
-    spreadId = "seven"
+  } else if (spreadLength == 7) {
     spread[0].position = "Hidden Past"
     spread[1].position = "Past Influence"
     spread[2].position = "Present Obstacles"
@@ -353,8 +348,7 @@ function runePosition() {
     spread[4].position = "Potential Action"
     spread[5].position = "Future Obstacles"
     spread[6].position = "Hidden Future"
-  } else if (length == 9) {
-    spreadId = "nine"
+  } else if (spreadLength == 9) {
     spread[0].position = "Niflheim"
     spread[1].position = "Asgard"
     spread[2].position = "Vanaheim"
@@ -406,8 +400,8 @@ function drawSpread() {
   let spreadTwoTemplate = ""
   let spreadThreeListElement = document.getElementById("spread-three")
   let spreadThreeTemplate = ""
-  let length = spread.length
-  for (let i = 0; i < length; i++) {
+  spreadLength = spread.length
+  for (let i = 0; i < spreadLength; i++) {
     let rune = spread[i]
     let runeCard = 'rune-card-upright'
     let labelColor = 'label-upright'
@@ -429,7 +423,7 @@ function drawSpread() {
       descriptionColor = 'description-weird'
       glow = 'weird'
     }
-    if ((length <= 3) || (length == 4 && i == 0) || (length == 5 && i <= 1) || (length == 7 && i <= 1) || (length == 9 && i <= 2)) {
+    if ((spreadLength <= 3) || (spreadLength == 4 && i == 0) || (spreadLength == 5 && i <= 1) || (spreadLength == 7 && i <= 1) || (spreadLength == 9 && i <= 2)) {
       spreadOneTemplate += `
     <div class="rune-card ${runeCard} m-1 shadow">
 
@@ -441,7 +435,7 @@ function drawSpread() {
         <large>${rune.name} </large>
       </button>
       
-      <img class = "${glow} center rune-img" src="Runes/${rune.name}.png">
+      <img class = "${glow} center rune-img" src="./Assets/Runes.png/${rune.name}.png">
 
       <button class="label-text center ${descriptionColor} rune-description" disabled>
         <p class = ${show}> ${rune.upright} Throw in a lot of sample text that will probably emcompass several lines of code to test the card capacity </p>
@@ -450,7 +444,7 @@ function drawSpread() {
   
     </div>
   `
-    } else if ((length == 4 && i <= 2) || (length == 5 && i == 2) || (length == 7 && i <= 4) || (length == 9 && i <= 5)) {
+    } else if ((spreadLength == 4 && i <= 2) || (spreadLength == 5 && i == 2) || (spreadLength == 7 && i <= 4) || (spreadLength == 9 && i <= 5)) {
       spreadTwoTemplate += `
     <div class="rune-card ${runeCard} m-1 shadow">
 
@@ -462,7 +456,7 @@ function drawSpread() {
         <large>${rune.name} </large>
       </button>
       
-      <img class = "${glow} center rune-img" src="Runes/${rune.name}.png">
+      <img class = "${glow} center rune-img" src="./Assets/Runes.png/${rune.name}.png">
 
       <button class="label-text center ${descriptionColor} rune-description" disabled>
         <p class = ${show}> ${rune.upright} Throw in a lot of sample text that will probably emcompass several lines of code to test the card capacity </p>
@@ -471,7 +465,7 @@ function drawSpread() {
   
     </div>
   `
-    } else if ((length == 4 && i == 3) || (length == 5 && i <= 4) || (length == 7 && i <= 6) || (length == 9 && i <= 8)) {
+    } else if ((spreadLength == 4 && i == 3) || (spreadLength == 5 && i <= 4) || (spreadLength == 7 && i <= 6) || (spreadLength == 9 && i <= 8)) {
       spreadThreeTemplate += `
     <div class="rune-card ${runeCard} m-1 shadow">
 
@@ -483,7 +477,7 @@ function drawSpread() {
         <large>${rune.name} </large>
       </button>
       
-      <img class = "${glow} center rune-img" src="Runes/${rune.name}.png">
+      <img class = "${glow} center rune-img" src="./Assets/Runes.png/${rune.name}.png">
 
       <button class="label-text center ${descriptionColor} rune-description" disabled>
         <p class = ${show}> ${rune.upright} Throw in a lot of sample text that will probably emcompass several lines of code to test the card capacity </p>
@@ -508,12 +502,25 @@ function drawMeaning() {
   let spreadTwoTemplate = ""
   let spreadThreeListElement = document.getElementById("spread-three")
   let spreadThreeTemplate = ""
-  let length = spread.length
-  for (let i = 0; i < length; i++) {
-    let meaningSpread = meaning[i]
-    let info = meaningSpread[i]
+  spreadLength = spread.length
+  for (let i = 0; i < spreadLength; i++) {
+    let meaningSpread = {}
+    switch (spreadLength) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+        meaningSpread = meaning[i]
+      case 7:
+        meaningSpread = meaning[5]
+      case 9:
+        meaningSpread = meaning[6]
+    }
+    let infoKey = "card" + spreadLength
+    let info = meaningSpread[infoKey]
     let infoPosition = spread[i].position
-    if ((length <= 3) || (length == 4 && i == 0) || (length == 5 && i <= 1) || (length == 7 && i <= 1) || (length == 9 && i <= 2)) {
+    if ((spreadLength <= 3) || (spreadLength == 4 && i == 0) || (spreadLength == 5 && i <= 1) || (spreadLength == 7 && i <= 1) || (spreadLength == 9 && i <= 2)) {
       spreadOneTemplate += `
     <div class="rune-card meaning-card m-1 shadow">
 
@@ -527,7 +534,7 @@ function drawMeaning() {
   
     </div>
   `
-    } else if ((length == 4 && i <= 2) || (length == 5 && i == 2) || (length == 7 && i <= 4) || (length == 9 && i <= 5)) {
+    } else if ((spreadLength == 4 && i <= 2) || (spreadLength == 5 && i == 2) || (spreadLength == 7 && i <= 4) || (spreadLength == 9 && i <= 5)) {
       spreadTwoTemplate += `
     <div class="rune-card meaning-card m-1 shadow">
 
@@ -541,7 +548,7 @@ function drawMeaning() {
   
     </div>
   `
-    } else if ((length == 4 && i == 3) || (length == 5 && i <= 4) || (length == 7 && i <= 6) || (length == 9 && i <= 8)) {
+    } else if ((spreadLength == 4 && i == 3) || (spreadLength == 5 && i <= 4) || (spreadLength == 7 && i <= 6) || (spreadLength == 9 && i <= 8)) {
       spreadThreeTemplate += `
     <div class="rune-card meaning-card m-1 shadow">
 
